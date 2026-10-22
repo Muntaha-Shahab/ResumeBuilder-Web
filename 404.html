@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>404</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+<div class="not-found">
+  <h1>404</h1>
+  <h2>Page Not Found</h2>
+  <p>The page you are looking for doesn’t exist.</p>
+  <a href="index.html" class="btn">Go Back Home</a>
+</div>
+<!-- Include Footer -->
+<script>
+    fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.body.insertAdjacentHTML('beforeend', data);
+        })
+        .catch(error => console.error('Error loading footer:', error));
+</script>
+
+
+</body>
+</html>

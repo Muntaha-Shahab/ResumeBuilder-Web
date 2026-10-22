@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ResumeBuilder</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+   <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="js/main.js" defer></script>
+
+<style>
+  .red {
+    font-size: 60px;
+  }
+  
+  .red:hover {
+    color: red;
+    border: 3px solid black;
+    font-size: 60px;
+  }
+</style>
+
+</head>
+<body>
+
+
+
+<div class="hero">
+  <h1>Build a Resume <span class="red">That</span> Gets You Hired</h1>
+  <p>Modern, ATS-optimized CVs with live preview, beautiful templates, and instant PDF export.</p>
+
+  <div class="d-flex justify-content-center gap-2" >
+    <a href="login.html" class="btn-outline-teal" style="background-color: white !important;" >
+      <i class="fa-regular fa-user me-2"></i> Get Started
+    </a>
+  </div>
+</div>
+
+<style>
+  .highlight-word {
+    font-size: 60px;
+    border: 3px solid black;
+    padding: 0 10px;
+    display: inline-block;
+    line-height: 1.2;
+    transition: all 0.3s ease;
+  }
+  
+  .highlight-word:hover {
+    color: red;
+    border-color: red;
+  }
+</style>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="cards">
+
+    <div class="card stat">
+      <h2 data-target="1200">0</h2>
+      <p>Resumes Created</p>
+    </div>
+
+    <div class="card stat">
+      <h2 data-target="10">0</h2>
+      <p>Professional Templates</p>
+    </div>
+
+<div class="card stat">
+  <h2 data-target="98" onclick="document.getElementById('atsText').style.display='none'">98</h2>
+  <p id="atsText">ATS Compatibility</p>
+</div>
+
+
+    <div class="card stat">
+      <h2 data-target="24">0</h2>
+      <p>Hour Support</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Why ResumeBuilder?</h2>
+  <div class="cards">
+    <div class="card">ATS-Friendly Templates</div>
+    <div class="card">Live Resume Builder</div>
+    <div class="card">Instant PDF Download</div>
+    <div class="card">Trusted by Job Seekers</div>
+  </div>
+</section>
+
+
+<!-- Include Footer -->
+<script>
+    fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.body.insertAdjacentHTML('beforeend', data);
+        })
+        .catch(error => console.error('Error loading footer:', error));
+</script>
+<!-- Include Navbar -->
+<script>
+    fetch('components/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            // Insert navbar at the beginning of body
+            document.body.insertAdjacentHTML('afterbegin', data);
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+</script>
+</body>
+</html>

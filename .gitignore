@@ -1,0 +1,12 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Old archived versions of the site (keep out of the repo)
+*.rar
+*.zip
+
+# Node (if you add tooling later)
+node_modules/

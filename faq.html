@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FAQ – ResumeBuilder</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Everything you need to know</h1>
+  <p> Clear answers to common questions, all in one place.</p>
+</div>
+
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+
+  <div class="faq-container">
+
+    <div class="faq-card">
+      <input type="checkbox" id="faq1">
+      <label for="faq1" class="faq-question">
+        What is included in the basic plan?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-answer">
+        <p>
+          The basic plan includes essential features suitable for individuals
+          and small teams just getting started.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-card">
+      <input type="checkbox" id="faq2">
+      <label for="faq2" class="faq-question">
+        Can I upgrade my plan later?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-answer">
+        <p>
+          Yes, you can upgrade or downgrade your plan at any time from your
+          account settings.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-card">
+      <input type="checkbox" id="faq3">
+      <label for="faq3" class="faq-question">
+        Do you offer customer support?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-answer">
+        <p>
+          Absolutely. Our support team is available 24/7 via email and live chat.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Include Footer -->
+<script>
+    fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.body.insertAdjacentHTML('beforeend', data);
+        })
+        .catch(error => console.error('Error loading footer:', error));
+</script>
+<!-- Include Navbar -->
+<script>
+    fetch('components/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            // Insert navbar at the beginning of body
+            document.body.insertAdjacentHTML('afterbegin', data);
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+</script>
+
+</body>
+</html>

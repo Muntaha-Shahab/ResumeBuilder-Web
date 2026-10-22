@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Preview - Template 2</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  padding: 40px;
+  background: var(--bg-main);
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text-main);
+}
+
+/* Main CV Container */
+.cv-container {
+  max-width: 900px;
+  margin: auto;
+  background: var(--bg-card);
+  padding: 60px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+}
+
+/* Name */
+.cv-header h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.cv-header p {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+/* Section Styling */
+.section {
+  margin-top: 50px;
+}
+
+.section h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.section h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+/* Section Content */
+.section p,
+.section li {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.section ul {
+  padding-left: 20px;
+}
+
+/* Experience & Education Blocks */
+.item {
+  margin-bottom: 25px;
+}
+
+.item h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.item span {
+  font-size: 14px;
+  color: var(--primary);
+}
+
+</style>
+</head>
+<body>
+
+<div class="cv-container">
+
+  <div class="cv-header">
+    <h1>John Doe</h1>
+    <p>Frontend Developer | johndoe@email.com | +123456789</p>
+  </div>
+
+  <div class="section">
+    <h2>Profile</h2>
+    <p>Passionate developer with experience in modern web technologies...</p>
+  </div>
+
+  <div class="section">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>React</li>
+      <li>Responsive Design</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Experience</h2>
+    <div class="item">
+      <h3>Frontend Developer</h3>
+      <span>ABC Company | 2022 - Present</span>
+      <p>Worked on building responsive web applications...</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Education</h2>
+    <div class="item">
+      <h3>Bachelor of Computer Science</h3>
+      <span>XYZ University | 2018 - 2022</span>
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+</html>

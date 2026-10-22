@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CV Builder</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --primary-teal: #14b8a6;
+            --primary-teal-dark: #0d9488;
+            --primary-teal-soft: rgba(20, 184, 166, 0.1);
+            --navy-dark: #0f4c4c;
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --bg-light: #fdfefe;
+            --white-glass: rgba(255, 255, 255, 0.9);
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            
+            /* Footer Dark Theme */
+            --footer-bg: #0a1a2f;
+            --footer-text: #94a3b8;
+            --footer-heading: #ffffff;
+            --footer-border: rgba(255, 255, 255, 0.1);
+            
+            /* Danger/Red */
+            --danger: #ef4444;
+            --danger-soft: #fef2f2;
+        }
+
+        /* ===== GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== NAVBAR STYLES ===== */
+        .navbar {
+            background: white;
+            border-bottom: 1px solid var(--border-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--navy-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-teal);
+        }
+
+        /* ===== BUTTON STYLES ===== */
+        .btn-teal {
+            background: linear-gradient(90deg, var(--primary-teal) 0%, var(--primary-teal-dark) 100%);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 10px 24px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-teal:hover { 
+            color: white; 
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline-teal {
+            background: transparent;
+            border: 1.5px solid var(--primary-teal);
+            color: var(--primary-teal);
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline-teal:hover {
+            background: var(--primary-teal-soft);
+        }
+
+        /* ===== LOGO BOX ===== */
+        .logo-box {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-teal-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ===== DASHBOARD LAYOUT ===== */
+        .dashboard-wrapper {
+            flex: 1;
+            display: flex;
+            padding: 2rem 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+            gap: 2rem;
+        }
+
+        /* Sidebar */
+        .dashboard-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-menu {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 0.9rem 1.2rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 12px;
+            margin-bottom: 0.25rem;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .menu-item i {
+            width: 24px;
+            font-size: 1.2rem;
+            margin-right: 12px;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        .menu-item:hover {
+            background: var(--primary-teal-soft);
+            color: var(--primary-teal);
+        }
+
+        .menu-item:hover i {
+            color: var(--primary-teal);
+        }
+
+        .menu-item.active {
+            background: var(--primary-teal-soft);
+            color: var(--primary-teal);
+            font-weight: 700;
+        }
+
+        .menu-item.active i {
+            color: var(--primary-teal);
+        }
+
+        .menu-divider {
+            height: 1px;
+            background: var(--border-light);
+            margin: 1rem 0;
+        }
+
+        /* RED SIGNOUT BUTTON */
+        .menu-item.signout {
+            color: var(--danger);
+        }
+
+        .menu-item.signout i {
+            color: var(--danger);
+        }
+
+        .menu-item.signout:hover {
+            background: var(--danger-soft);
+            color: var(--danger);
+        }
+
+        .menu-item.signout:hover i {
+            color: var(--danger);
+        }
+
+        /* Main Content */
+        .dashboard-main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Header */
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .page-title h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .page-title p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--border-light);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .user-profile:hover {
+            border-color: var(--primary-teal);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-teal-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .user-info {
+            line-height: 1.4;
+        }
+
+        .user-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .user-email {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--primary-teal);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-teal-soft);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-teal);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== IMPROVED CREATE CV CARD ===== */
+        .create-cv-section {
+            background: linear-gradient(135deg, #f0f7f7 0%, #e6f0f0 100%);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .create-cv-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .create-cv-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .create-cv-text h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .create-cv-text p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+        }
+
+        .template-badges {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .template-badge {
+            background: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-teal);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .template-badge i {
+            margin-right: 0.5rem;
+            color: var(--primary-teal);
+        }
+
+        .create-cv-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-create-large {
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-teal-dark));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 10px 20px -5px rgba(20, 184, 166, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-create-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -5px rgba(20, 184, 166, 0.4);
+            color: white;
+        }
+
+        .btn-create-large i {
+            font-size: 1.2rem;
+        }
+
+        .btn-outline-create {
+            background: transparent;
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1.5px solid var(--border-light);
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-create:hover {
+            border-color: var(--primary-teal);
+            color: var(--primary-teal);
+            background: white;
+        }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .section-header h2 i {
+            color: var(--primary-teal);
+            margin-right: 0.5rem;
+        }
+
+        .view-link {
+            color: var(--primary-teal);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .view-link:hover {
+            gap: 0.8rem;
+        }
+
+        /* CV Grid */
+        .cv-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .cv-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+            position: relative;
+            width: 100%;
+        }
+
+        .cv-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-teal);
+            box-shadow: var(--shadow-md);
+        }
+
+        .cv-card.professional { 
+            border-top: 4px solid var(--primary-teal); 
+        }
+
+        .cv-preview {
+            height: 160px;
+            background: linear-gradient(135deg, #f0f7f7 0%, #e6f0f0 100%);
+            position: relative;
+        }
+
+        .cv-preview::after {
+            content: '●●●';
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: var(--primary-teal);
+            font-size: 20px;
+            opacity: 0.3;
+        }
+
+        .cv-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.3rem 1rem;
+            background: white;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--primary-teal);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .cv-content {
+            padding: 1.25rem;
+        }
+
+        .cv-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .cv-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .progress {
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 10px;
+            margin: 0.75rem 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-teal-dark));
+            border-radius: 10px;
+        }
+
+        .cv-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            background: white;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-action:hover {
+            border-color: var(--primary-teal);
+            color: var(--primary-teal);
+            background: var(--primary-teal-soft);
+        }
+
+        .btn-action.delete:hover {
+            border-color: var(--danger);
+            color: var(--danger);
+            background: var(--danger-soft);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 4rem 0 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--footer-border);
+        }
+
+        .footer-brand {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--footer-heading);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .footer-text {
+            color: var(--footer-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 300px;
+        }
+
+        .footer-heading {
+            color: var(--footer-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--footer-text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-teal);
+            transform: translateX(5px);
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: var(--footer-border);
+            margin: 3rem 0 2rem;
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--footer-text);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* User Menu */
+        .user-menu {
+            position: fixed;
+            top: 90px;
+            right: 30px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            width: 260px;
+            z-index: 1000;
+            border: 1px solid var(--border-light);
+            display: none;
+            overflow: hidden;
+        }
+
+        .user-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 12px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .dropdown-item:hover {
+            background: var(--primary-teal-soft);
+            color: var(--primary-teal);
+        }
+
+        .dropdown-item.text-danger:hover {
+            background: var(--danger-soft);
+            color: var(--danger);
+        }
+
+        /* Alert Styles */
+        .alert-teal {
+            background-color: rgba(20, 184, 166, 0.1);
+            color: #0d4a4a;
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 20px;
+            border: 1px dashed var(--border-light);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: var(--primary-teal);
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .dashboard-wrapper {
+                max-width: 1200px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cv-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .create-cv-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .create-cv-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .template-badges {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .dashboard-wrapper {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .dashboard-sidebar {
+                width: 100%;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cv-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .create-cv-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn-create-large,
+            .btn-outline-create {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <div class="d-flex align-items-center gap-3">
+                <div class="logo-box">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <a class="navbar-brand" href="index.html">ResumeBuilder</a>
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="templates.html">Templates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex gap-2">
+                    <a href="#" class="btn-outline-teal">
+                        <i class="fa-regular fa-user me-2"></i>Dashboard
+                    </a>
+                    <a href="templates.html" class="btn-teal">
+                        <i class="fa-regular fa-plus me-2"></i>Create CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <i class="fa-regular fa-grid-2"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showMyCVs(); return false;">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <span>My CVs</span>
+                </a>
+                <a href="templates.html" class="menu-item">
+                    <i class="fa-regular fa-wand-magic"></i>
+                    <span>Templates</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showHistory(); return false;">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>History</span>
+                </a>
+                
+                <div class="menu-divider"></div>
+                
+                <a href="profile.html" class="menu-item">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa-regular fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+                
+                <!-- RED SIGNOUT BUTTON -->
+                <a href="#" class="menu-item signout" onclick="logout(); return false;">
+                    <i class="fa-regular fa-sign-out"></i>
+                    <span>Sign Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main" id="dashboardMain">
+            <!-- Header will be dynamically populated -->
+            <div class="dashboard-header">
+                <div class="page-title">
+                    <h1>Welcome back, <span id="userName">User</span>! 👋</h1>
+                    <p>Manage your CVs and track your progress</p>
+                </div>
+                
+                <div class="user-profile" onclick="toggleUserMenu()">
+                    <div class="user-avatar" id="userAvatar">JD</div>
+                    <div class="user-info">
+                        <div class="user-name" id="headerName">Loading...</div>
+                        <div class="user-email" id="userEmail">loading...</div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down" style="font-size: 12px; color: var(--text-muted);"></i>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fa-regular fa-file-lines"></i>
+                    </div>
+                    <div class="stat-value" id="totalCvs">0</div>
+                    <div class="stat-label">Total CVs</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fa-regular fa-circle-check"></i>
+                    </div>
+                    <div class="stat-value" id="completedCvs">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <div class="stat-value" id="timeSaved">24h</div>
+                    <div class="stat-label">Time Saved</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fa-regular fa-eye"></i>
+                    </div>
+                    <div class="stat-value" id="totalViews">1.2k</div>
+                    <div class="stat-label">Views</div>
+                </div>
+            </div>
+
+            <!-- Dynamic Content Area -->
+            <div id="dynamicContent"></div>
+        </main>
+    </div>
+
+    
+
+    <!-- User Menu Dropdown -->
+    <div class="user-menu" id="userMenu">
+        <div class="p-3 border-bottom">
+            <div class="fw-bold" id="menuUserName">Loading...</div>
+            <div class="small text-muted" id="menuUserEmail">loading...</div>
+        </div>
+        <div class="p-2">
+            <a href="profile.html" class="dropdown-item">
+                <i class="fa-regular fa-user" style="color: var(--primary-teal); width: 20px;"></i>
+                <span>Profile</span>
+            </a>
+            <a href="#" class="dropdown-item">
+                <i class="fa-regular fa-gear" style="color: var(--primary-teal); width: 20px;"></i>
+                <span>Settings</span>
+            </a>
+            <hr class="my-2">
+            <a href="#" class="dropdown-item text-danger" onclick="logout(); return false;">
+                <i class="fa-regular fa-sign-out" style="width: 20px;"></i>
+                <span>Sign Out</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // ===== AUTHENTICATION CHECK =====
+        (function checkAuth() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (!currentUser) {
+                // No user logged in, redirect to login
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // User is authenticated, load dashboard
+            initializeDashboard(currentUser);
+        })();
+
+        // ===== INITIALIZE DASHBOARD =====
+        function initializeDashboard(currentUser) {
+            // Update UI with user info
+            const firstName = currentUser.name ? currentUser.name.split(' ')[0] : 'User';
+            const fullName = currentUser.name || 'User';
+            const email = currentUser.email || 'user@example.com';
+            
+            // Generate initials for avatar
+            const initials = fullName.split(' ')
+                .map(n => n[0])
+                .join('')
+                .substring(0, 2)
+                .toUpperCase();
+            
+            // Update all user fields
+            document.getElementById('userName').textContent = firstName;
+            document.getElementById('headerName').textContent = fullName;
+            document.getElementById('userEmail').textContent = email;
+            document.getElementById('userAvatar').textContent = initials;
+            document.getElementById('menuUserName').textContent = fullName;
+            document.getElementById('menuUserEmail').textContent = email;
+
+            // Load user's CV data
+            loadUserCVs(currentUser.id || currentUser.email);
+            
+            // Load default dashboard view
+            showDashboardHome();
+        }
+
+        // ===== LOAD USER CVS =====
+        function loadUserCVs(userId) {
+            // Get all CVs from localStorage
+            let allCVs = JSON.parse(localStorage.getItem('userCVs')) || {};
+            
+            // Get CVs for this specific user
+            let userCVs = allCVs[userId] || [];
+            
+            // If no CVs exist, initialize with empty array
+            if (userCVs.length === 0) {
+                // For demo, create sample CVs if none exist
+                userCVs = [
+                    { 
+                        id: 'cv_' + Date.now(), 
+                        templateId: 'professional1',
+                        name: 'The Executive', 
+                        progress: 85, 
+                        completed: false,
+                        lastEdited: new Date().toISOString(),
+                        views: 0
+                    },
+                    { 
+                        id: 'cv_' + (Date.now() + 1), 
+                        templateId: 'professional2',
+                        name: 'The Modern Pro', 
+                        progress: 60, 
+                        completed: false,
+                        lastEdited: new Date().toISOString(),
+                        views: 0
+                    }
+                ];
+                
+                // Save sample CVs
+                allCVs[userId] = userCVs;
+                localStorage.setItem('userCVs', JSON.stringify(allCVs));
+            }
+            
+            // Calculate stats
+            const totalCvs = userCVs.length;
+            const completedCvs = userCVs.filter(cv => cv.completed).length;
+            const totalViews = userCVs.reduce((sum, cv) => sum + (cv.views || 0), 0);
+            
+            // Update stats display
+            document.getElementById('totalCvs').textContent = totalCvs;
+            document.getElementById('completedCvs').textContent = completedCvs;
+            document.getElementById('totalViews').textContent = totalViews > 1000 ? 
+                (totalViews/1000).toFixed(1) + 'k' : totalViews;
+            
+            // Store for later use
+            window.currentUserCVs = userCVs;
+            window.currentUserId = userId;
+        }
+
+        // ===== SHOW DASHBOARD HOME =====
+        function showDashboardHome() {
+            const dynamicContent = document.getElementById('dynamicContent');
+            
+            dynamicContent.innerHTML = `
+                <!-- Create CV Section -->
+                <div class="create-cv-section">
+                    <div class="create-cv-content">
+                        <div class="create-cv-text">
+                            <h2>Create a new CV ✨</h2>
+                            <p>Start building your professional CV with our premium templates. Choose from 3 professional designs tailored for your success.</p>
+                            <div class="template-badges">
+                                <span class="template-badge"><i class="fa-regular fa-briefcase"></i> The Executive</span>
+                                <span class="template-badge"><i class="fa-regular fa-chart-line"></i> The Modern Pro</span>
+                                <span class="template-badge"><i class="fa-regular fa-crown"></i> The Creative Pro</span>
+                            </div>
+                        </div>
+                        <div class="create-cv-actions">
+                            <a href="templates.html" class="btn-create-large">
+                                <i class="fa-regular fa-plus-circle"></i>
+                                Create New CV
+                            </a>
+                            <a href="templates.html" class="btn-outline-create">
+                                <i class="fa-regular fa-eye"></i>
+                                Browse Templates
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional CVs Section -->
+                <div class="section-header">
+                    <h2>
+                        <i class="fa-regular fa-briefcase"></i>
+                        Your Professional CVs
+                    </h2>
+                    <a href="#" onclick="showMyCVs(); return false;" class="view-link">
+                        View all <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- CV Grid -->
+                <div class="cv-grid" id="cvsGrid">
+                    ${renderCVGrid()}
+                </div>
+            `;
+        }
+
+        // ===== RENDER CV GRID =====
+        function renderCVGrid() {
+            const cvs = window.currentUserCVs || [];
+            
+            if (cvs.length === 0) {
+                return `
+                    <div class="empty-state">
+                        <i class="fa-regular fa-file-lines"></i>
+                        <h3>No CVs yet</h3>
+                        <p class="text-muted">Create your first professional CV to get started</p>
+                        <a href="templates.html" class="btn-teal mt-3">Create CV</a>
+                    </div>
+                `;
+            }
+            
+            // Show only first 3 CVs on dashboard
+            const displayCVs = cvs.slice(0, 3);
+            
+            return displayCVs.map(cv => `
+                <div class="cv-card professional" data-cv-id="${cv.id}">
+                    <div class="cv-preview">
+                        <span class="cv-badge">Professional</span>
+                    </div>
+                    <div class="cv-content">
+                        <h3 class="cv-title">${cv.name}</h3>
+                        <div class="cv-meta">
+                            <span><i class="fa-regular fa-clock me-1"></i> ${getTimeAgo(cv.lastEdited)}</span>
+                            <span><i class="fa-regular fa-circle-check me-1"></i> ${cv.progress}%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: ${cv.progress}%"></div>
+                        </div>
+                        <div class="cv-actions">
+                            <a href="builder.html?cv=${cv.id}" class="btn-action">
+                                <i class="fa-regular fa-pen-to-square"></i> Edit
+                            </a>
+                            <button class="btn-action delete" onclick="deleteCV('${cv.id}')">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== SHOW MY CVS =====
+        function showMyCVs() {
+            const dynamicContent = document.getElementById('dynamicContent');
+            const cvs = window.currentUserCVs || [];
+            
+            dynamicContent.innerHTML = `
+                <div class="section-header">
+                    <h2>
+                        <i class="fa-regular fa-file-lines"></i>
+                        All My CVs
+                    </h2>
+                    <a href="templates.html" class="btn-teal">
+                        <i class="fa-regular fa-plus"></i> Create New
+                    </a>
+                </div>
+
+                <div class="cv-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    ${cvs.length === 0 ? `
+                        <div class="empty-state" style="grid-column: 1/-1;">
+                            <i class="fa-regular fa-file-lines"></i>
+                            <h3>No CVs yet</h3>
+                            <p class="text-muted">Create your first professional CV to get started</p>
+                            <a href="templates.html" class="btn-teal mt-3">Create CV</a>
+                        </div>
+                    ` : cvs.map(cv => `
+                        <div class="cv-card professional" data-cv-id="${cv.id}">
+                            <div class="cv-preview">
+                                <span class="cv-badge">Professional</span>
+                            </div>
+                            <div class="cv-content">
+                                <h3 class="cv-title">${cv.name}</h3>
+                                <div class="cv-meta">
+                                    <span><i class="fa-regular fa-clock me-1"></i> ${getTimeAgo(cv.lastEdited)}</span>
+                                    <span><i class="fa-regular fa-circle-check me-1"></i> ${cv.progress}%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: ${cv.progress}%"></div>
+                                </div>
+                                <div class="cv-actions">
+                                    <a href="builder.html?cv=${cv.id}" class="btn-action">
+                                        <i class="fa-regular fa-pen-to-square"></i> Edit
+                                    </a>
+                                    <a href="preview.html?cv=${cv.id}" class="btn-action">
+                                        <i class="fa-regular fa-eye"></i> Preview
+                                    </a>
+                                    <button class="btn-action delete" onclick="deleteCV('${cv.id}')">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // ===== SHOW HISTORY =====
+        function showHistory() {
+            const dynamicContent = document.getElementById('dynamicContent');
+            
+            dynamicContent.innerHTML = `
+                <div class="section-header">
+                    <h2>
+                        <i class="fa-regular fa-clock"></i>
+                        Recent Activity
+                    </h2>
+                </div>
+                <div class="alert-teal">
+                    <i class="fa-regular fa-circle-info me-2"></i>
+                    Your recent CV edits and updates will appear here.
+                </div>
+                <div class="empty-state">
+                    <i class="fa-regular fa-clock"></i>
+                    <h3>No recent activity</h3>
+                    <p class="text-muted">Start editing your CVs to see your history</p>
+                </div>
+            `;
+        }
+
+        // ===== DELETE CV =====
+        window.deleteCV = function(cvId) {
+            if (confirm('Are you sure you want to delete this CV? This action cannot be undone.')) {
+                // Get all CVs
+                let allCVs = JSON.parse(localStorage.getItem('userCVs')) || {};
+                let userId = window.currentUserId;
+                
+                // Filter out the deleted CV
+                allCVs[userId] = allCVs[userId].filter(cv => cv.id !== cvId);
+                
+                // Save back to localStorage
+                localStorage.setItem('userCVs', JSON.stringify(allCVs));
+                
+                // Update current user's CVs
+                window.currentUserCVs = allCVs[userId];
+                
+                // Reload current view
+                if (document.querySelector('.section-header h2').textContent.includes('All My CVs')) {
+                    showMyCVs();
+                } else {
+                    showDashboardHome();
+                }
+                
+                // Update stats
+                document.getElementById('totalCvs').textContent = window.currentUserCVs.length;
+                document.getElementById('completedCvs').textContent = 
+                    window.currentUserCVs.filter(cv => cv.completed).length;
+            }
+        };
+
+        // ===== TOGGLE USER MENU =====
+        window.toggleUserMenu = function() {
+            const menu = document.getElementById('userMenu');
+            menu.classList.toggle('show');
+            
+            if (menu.classList.contains('show')) {
+                setTimeout(() => {
+                    document.addEventListener('click', function closeMenu(e) {
+                        if (!e.target.closest('.user-profile') && !e.target.closest('#userMenu')) {
+                            menu.classList.remove('show');
+                            document.removeEventListener('click', closeMenu);
+                        }
+                    });
+                }, 100);
+            }
+        };
+
+        // ===== LOGOUT =====
+        window.logout = function() {
+            if (confirm('Are you sure you want to sign out?')) {
+                localStorage.removeItem('currentUser');
+                window.location.href = 'login.html';
+            }
+        };
+
+        // ===== HELPER: Get time ago string =====
+        function getTimeAgo(dateString) {
+            if (!dateString) return 'Recently';
+            
+            const date = new Date(dateString);
+            const now = new Date();
+            const seconds = Math.floor((now - date) / 1000);
+            
+            if (seconds < 60) return 'Just now';
+            if (seconds < 3600) return Math.floor(seconds / 60) + ' minutes ago';
+            if (seconds < 86400) return Math.floor(seconds / 3600) + ' hours ago';
+            if (seconds < 604800) return Math.floor(seconds / 86400) + ' days ago';
+            
+            return date.toLocaleDateString();
+        }
+
+        // ===== CLICK OUTSIDE TO CLOSE MENU =====
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.user-menu') && !e.target.closest('.user-profile')) {
+                document.getElementById('userMenu').classList.remove('show');
+            }
+        });
+    </script>
+    <!-- Include Footer -->
+<script>
+    fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.body.insertAdjacentHTML('beforeend', data);
+        })
+        .catch(error => console.error('Error loading footer:', error));
+</script>
+</body>
+</html>

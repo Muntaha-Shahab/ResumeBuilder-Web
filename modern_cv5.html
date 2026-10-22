@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Dark · Premium CV Template</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/modern_cv5.css">
+    
+    <style>
+        /* Languages Section - Soft Dark Theme */
+        .languages-soft {
+            margin-top: 25px;
+            padding: 0 20px 20px;
+        }
+        
+        .language-grid-soft {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .language-card-soft {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 16px 14px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .language-card-soft::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(110, 69, 226, 0.1), rgba(255, 255, 255, 0));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .language-card-soft:hover {
+            transform: translateY(-4px);
+            border-color: rgba(110, 69, 226, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .language-card-soft:hover::after {
+            opacity: 1;
+        }
+        
+        .language-name-soft {
+            display: block;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+        
+        .language-level-soft {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 12px;
+        }
+        
+        .language-level-soft.native {
+            background: rgba(110, 69, 226, 0.15);
+            color: #6e45e2;
+            border-color: rgba(110, 69, 226, 0.3);
+        }
+        
+        .language-level-soft.fluent {
+            background: rgba(79, 172, 254, 0.15);
+            color: #4facfe;
+            border-color: rgba(79, 172, 254, 0.3);
+        }
+        
+        .language-level-soft.professional {
+            background: rgba(0, 227, 150, 0.15);
+            color: #00e396;
+            border-color: rgba(0, 227, 150, 0.3);
+        }
+        
+        .language-level-soft.basic {
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+            border-color: rgba(255, 193, 7, 0.2);
+        }
+        
+        .language-progress-soft {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .language-progress-bar-soft {
+            height: 100%;
+            background: linear-gradient(90deg, #6e45e2, #4facfe);
+            border-radius: 2px;
+            position: relative;
+        }
+        
+        /* Pill Style Alternative */
+        .language-pills-soft {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .language-pill-soft {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 40px;
+            padding: 8px 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .language-pill-soft:hover {
+            border-color: #6e45e2;
+            background: rgba(110, 69, 226, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        .pill-name-soft {
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .pill-level-soft {
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .pill-level-soft.native {
+            background: rgba(110, 69, 226, 0.2);
+            color: #6e45e2;
+        }
+        
+        .pill-level-soft.fluent {
+            background: rgba(79, 172, 254, 0.2);
+            color: #4facfe;
+        }
+        
+        .pill-level-soft.professional {
+            background: rgba(0, 227, 150, 0.2);
+            color: #00e396;
+        }
+        
+        /* Section Divider */
+        .soft-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), rgba(110, 69, 226, 0.3), rgba(255, 255, 255, 0.1), transparent);
+            margin: 20px 0;
+        }
+        
+        /* Panel title adjustment for languages */
+        .panel-title i {
+            color: #6e45e2;
+        }
+        
+        /* Language note */
+        .language-note {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .language-note i {
+            color: #6e45e2;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-wrapper">
+        <!-- Main CV Container -->
+        <div class="cv-card-dual" id="cvCard">
+            
+            <!-- Two-Column Layout -->
+            <div class="row g-0">
+                <!-- LEFT PANEL - Gradient Soft Dark -->
+                <div class="col-lg-4 left-panel">
+                    
+                    <!-- Avatar -->
+                    <div class="avatar-wrapper">
+                        <div class="avatar-ring">
+                            <div class="avatar-inner">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="social-icons">
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-github"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-envelope-fill"></i></a>
+                    </div>
+
+                    <!-- Skills Section -->
+                    <div class="skills-section">
+                        <h3 class="panel-title">
+                            <i class="bi bi-bar-chart-steps me-2"></i>Expertise
+                        </h3>
+                        
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span>UX Strategy</span>
+                                <span class="skill-percent" id="skill1Percent">92%</span>
+                            </div>
+                            <div class="progress skill-progress">
+                                <div class="progress-bar skill-bar" id="skill1Bar" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span>Product Design</span>
+                                <span class="skill-percent" id="skill2Percent">88%</span>
+                            </div>
+                            <div class="progress skill-progress">
+                                <div class="progress-bar skill-bar" id="skill2Bar" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span>Design Systems</span>
+                                <span class="skill-percent" id="skill3Percent">85%</span>
+                            </div>
+                            <div class="progress skill-progress">
+                                <div class="progress-bar skill-bar" id="skill3Bar" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span>User Research</span>
+                                <span class="skill-percent" id="skill4Percent">90%</span>
+                            </div>
+                            <div class="progress skill-progress">
+                                <div class="progress-bar skill-bar" id="skill4Bar" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-label">
+                                <span>Prototyping</span>
+                                <span class="skill-percent" id="skill5Percent">87%</span>
+                            </div>
+                            <div class="progress skill-progress">
+                                <div class="progress-bar skill-bar" id="skill5Bar" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LANGUAGES SECTION - ADDED HERE -->
+                    <div class="languages-soft">
+                        <h3 class="panel-title">
+                            <i class="bi bi-translate me-2"></i>Languages
+                        </h3>
+                        
+                        <!-- Grid Layout with Progress -->
+                        <div class="language-grid-soft">
+                            <div class="language-card-soft">
+                                <span class="language-name-soft">English</span>
+                                <span class="language-level-soft native">Native</span>
+                                <div class="language-progress-soft">
+                                    <div class="language-progress-bar-soft" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="language-card-soft">
+                                <span class="language-name-soft">Mandarin</span>
+                                <span class="language-level-soft native">Native</span>
+                                <div class="language-progress-soft">
+                                    <div class="language-progress-bar-soft" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="language-card-soft">
+                                <span class="language-name-soft">Spanish</span>
+                                <span class="language-level-soft fluent">Fluent</span>
+                                <div class="language-progress-soft">
+                                    <div class="language-progress-bar-soft" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="language-card-soft">
+                                <span class="language-name-soft">French</span>
+                                <span class="language-level-soft professional">Professional</span>
+                                <div class="language-progress-soft">
+                                    <div class="language-progress-bar-soft" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="language-card-soft">
+                                <span class="language-name-soft">Japanese</span>
+                                <span class="language-level-soft professional">Professional</span>
+                                <div class="language-progress-soft">
+                                    <div class="language-progress-bar-soft" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="language-card-soft">
+                                <span class="language-name-soft">German</span>
+                                <span class="language-level-soft basic">Basic</span>
+                                <div class="language-progress-soft">
+                                    <div class="language-progress-bar-soft" style="width: 35%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="soft-divider"></div>
+                        
+                        
+                        
+                        <!-- Language Note -->
+                        <div class="language-note">
+                            <i class="bi bi-info-circle-fill"></i>
+                            <span>Worked with international clients across 20+ countries</span>
+                        </div>
+                    </div>
+
+                    <!-- Left Panel Footer -->
+                    <div class="panel-footer">
+                        <p class="footer-text">Available for select projects</p>
+                    </div>
+                </div>
+
+                <!-- VERTICAL DIVIDER 1 - Main Accent -->
+                <div class="vertical-divider main-divider"></div>
+
+                <!-- RIGHT PANEL - Light Content -->
+                <div class="col-lg-8 right-panel">
+                    
+
+                    <!-- Name & Title -->
+                    <div class="name-title-block">
+                        <h1 class="soft-name">Michael Chen</h1>
+                        <h2 class="soft-title">Lead Product Designer</h2>
+                        <div class="soft-underline"></div>
+                    </div>
+
+                    <!-- About Me -->
+                    <section class="content-block">
+                        <h3 class="block-title">
+                            <i class="bi bi-person-badge me-2"></i>Profile
+                        </h3>
+                        <p class="block-text">
+                            Senior product designer with 9+ years of experience creating 
+                            intuitive digital experiences for global brands. Passionate about 
+                            design systems, user-centered research, and mentoring emerging 
+                            designers. Led design initiatives that increased user engagement 
+                            by 45% and reduced development time by 30%.
+                        </p>
+                    </section>
+
+                    <!-- Experience -->
+                    <section class="content-block">
+                        <h3 class="block-title">
+                            <i class="bi bi-briefcase-fill me-2"></i>Experience
+                        </h3>
+                        
+                        <div class="exp-row">
+                            <div class="exp-marker"></div>
+                            <div class="exp-content">
+                                <div class="exp-header">
+                                    <h4 class="exp-role">Senior Product Designer</h4>
+                                    <span class="exp-date">2022 — Present</span>
+                                </div>
+                                <p class="exp-company">Adobe · San Francisco, CA</p>
+                                <ul class="exp-list">
+                                    <li>Lead design for Creative Cloud ecosystem used by 20M+ creators</li>
+                                    <li>Established design system adopted by 15+ product teams</li>
+                                    <li>Mentored 6 junior designers through formal mentorship program</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="exp-row">
+                            <div class="exp-marker"></div>
+                            <div class="exp-content">
+                                <div class="exp-header">
+                                    <h4 class="exp-role">Product Designer</h4>
+                                    <span class="exp-date">2019 — 2022</span>
+                                </div>
+                                <p class="exp-company">Spotify · New York, NY</p>
+                                <ul class="exp-list">
+                                    <li>Redesigned podcast discovery interface, increasing listens by 35%</li>
+                                    <li>Collaborated with engineering to implement design components</li>
+                                    <li>Conducted 40+ user interviews to validate design hypotheses</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Education -->
+                    <section class="content-block">
+                        <h3 class="block-title">
+                            <i class="bi bi-mortarboard-fill me-2"></i>Education
+                        </h3>
+                        
+                        <div class="edu-row">
+                            <div class="edu-dot"></div>
+                            <div class="edu-content">
+                                <p class="edu-degree">Master of Human-Computer Interaction</p>
+                                <p class="edu-school">Carnegie Mellon University · 2019</p>
+                            </div>
+                        </div>
+
+                        <div class="edu-row">
+                            <div class="edu-dot"></div>
+                            <div class="edu-content">
+                                <p class="edu-degree">Bachelor of Fine Arts, Interaction Design</p>
+                                <p class="edu-school">Rhode Island School of Design · 2017</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contact Micro Bar -->
+                    <div class="contact-micro">
+                        <span><i class="bi bi-envelope-fill"></i> michael.chen@design.io</span>
+                        <span><i class="bi bi-telephone-fill"></i> +1 (415) 555-0123</span>
+                        <span><i class="bi bi-linkedin"></i> linkedin.com/in/michaelchen</span>
+                    </div>
+                </div>
+
+                <!-- VERTICAL DIVIDER 2 - Subtle Right Accent -->
+                <div class="vertical-divider subtle-divider"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/modern_cv5.js"></script>
+    <script>
+        // Initialize progress bars
+        document.addEventListener('DOMContentLoaded', function() {
+            const skills = [
+                { id: 'skill1Bar', percent: 92 },
+                { id: 'skill2Bar', percent: 88 },
+                { id: 'skill3Bar', percent: 85 },
+                { id: 'skill4Bar', percent: 90 },
+                { id: 'skill5Bar', percent: 87 }
+            ];
+            
+            skills.forEach(skill => {
+                const bar = document.getElementById(skill.id);
+                if (bar) {
+                    bar.style.width = skill.percent + '%';
+                }
+            });
+            
+            // Animate language cards
+            const langCards = document.querySelectorAll('.language-card-soft');
+            langCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                card.style.transition = 'all 0.4s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 500 + (index * 100));
+            });
+        });
+    </script>
+</body>
+</html>

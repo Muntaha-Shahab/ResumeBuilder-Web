@@ -1,0 +1,655 @@
+/* FILE: css/builder.css */
+:root {
+    --brand-teal: #14b8a6;
+    --brand-purple: #9333ea;
+    --cv-sidebar-bg: #9333ea;
+    --glass-bg: rgba(255, 255, 255, 0.9);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    background-color: #f8fafc; 
+    height: 100vh; 
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 12px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-box { 
+    width: 38px; 
+    height: 38px; 
+    background: linear-gradient(135deg, var(--brand-teal), #0d9488);
+    border-radius: 10px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(20,184,166,0.2);
+}
+
+.brand-text {
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: #0f4c4c;
+    letter-spacing: -0.5px;
+}
+
+.template-badge {
+    background: #f1f5f9;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--brand-teal);
+    margin-left: 10px;
+}
+
+/* Navbar Buttons Container */
+.nav-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Template Button */
+.btn-template {
+    background: transparent;
+    border: 1.5px solid #e2e8f0;
+    color: #1e293b;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.btn-template:hover {
+    border-color: var(--brand-teal);
+    color: var(--brand-teal);
+    background: #f8fafc;
+}
+
+.btn-template i {
+    font-size: 0.9rem;
+}
+
+/* Preview Button */
+.btn-preview {
+    background: white;
+    border: 1.5px solid var(--brand-teal);
+    color: var(--brand-teal);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.btn-preview:hover {
+    background: var(--brand-teal);
+    color: white;
+}
+
+.btn-preview i {
+    font-size: 0.9rem;
+}
+
+/* Download Button */
+.btn-download {
+    background: linear-gradient(135deg, var(--brand-teal), #0d9488);
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(20,184,166,0.2);
+    transition: all 0.2s;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(20,184,166,0.3);
+}
+
+.btn-download i {
+    font-size: 0.9rem;
+}
+
+/* Remove any conflicting styles */
+.top-actions {
+    display: none; /* Hide any floating buttons */
+}
+
+.action-btn {
+    display: none; /* Hide any other button styles */
+}
+
+/* ===== MAIN STUDIO LAYOUT ===== */
+.studio-container {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 70px);
+    padding: 20px;
+    gap: 20px;
+    background: #f1f5f9;
+}
+
+/* EDITOR PANEL */
+.editor-panel {
+    width: 600px;
+    background: white;
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    padding: 25px;
+    overflow-y: auto;
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.editor-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.editor-header span {
+    background: #f1f5f9;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--brand-teal);
+}
+
+.section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--brand-teal);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 20px 0 12px;
+    display: block;
+}
+
+.section-label:first-of-type {
+    margin-top: 0;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.form-control {
+    border-radius: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: var(--brand-teal);
+    box-shadow: 0 0 0 3px rgba(20,184,166,0.1);
+    background: white;
+    outline: none;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Skill Input Group */
+.skill-input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.skill-input-group input {
+    flex: 1;
+}
+
+.skill-input-group select {
+    width: 80px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    padding: 8px;
+    font-size: 0.8rem;
+}
+
+.skill-percent-badge {
+    background: #f1f5f9;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--brand-teal);
+}
+
+/* Language Input Group */
+.language-input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.language-input-group input {
+    flex: 1;
+}
+
+.language-input-group select {
+    width: 100px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    padding: 8px;
+    font-size: 0.8rem;
+}
+
+/* Add Button */
+.add-btn {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin: 10px 0;
+}
+
+.add-btn:hover {
+    border-color: var(--brand-teal);
+    color: var(--brand-teal);
+    background: #f0fdf9;
+}
+
+.add-btn i {
+    margin-right: 6px;
+}
+
+/* Dynamic Items */
+.dynamic-item {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #f0f2f5;
+    transition: all 0.2s;
+}
+
+.dynamic-item:hover {
+    background: #fafbfc;
+}
+
+.remove-btn {
+    background: transparent;
+    border: 1.5px solid #ef4444;
+    color: #ef4444;
+    border-radius: 30px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.remove-btn:hover {
+    background: #ef4444;
+    color: white;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f2f5;
+}
+
+.btn-save {
+    flex: 1;
+    background: var(--brand-teal);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-save:hover {
+    background: #0d9488;
+    transform: translateY(-2px);
+}
+
+.btn-reset {
+    flex: 1;
+    background: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-reset:hover {
+    background: #e2e8f0;
+}
+
+/* PREVIEW PANEL */
+.preview-panel {
+    flex: 1;
+    background: #e2e8f0;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 40px;
+}
+
+/* CV Document */
+.cv-document {
+    width: 210mm;
+    min-height: 297mm;
+    background: white;
+    display: flex;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* CV Sidebar */
+.cv-sidebar {
+    width: 30%;
+    background: var(--brand-purple);
+    color: white;
+    padding: 35px 25px;
+}
+
+.cv-sidebar h2 { 
+    font-size: 0.9rem; 
+    font-weight: 700; 
+    margin-top: 25px; 
+    border-bottom: 1px solid rgba(255,255,255,0.3); 
+    padding-bottom: 6px; 
+    margin-bottom: 15px; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contact-row { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    font-size: 0.7rem; 
+    margin-bottom: 10px; 
+    color: #f3e8ff;
+}
+
+.contact-row i { 
+    width: 18px; 
+    color: white; 
+    font-size: 0.8rem;
+}
+
+/* Skill Items in Preview */
+.skill-item {
+    margin-bottom: 12px;
+}
+
+.skill-name {
+    font-size: 0.7rem;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.skill-bar-bg { 
+    height: 4px; 
+    background: rgba(255,255,255,0.2); 
+    border-radius: 2px; 
+}
+
+.skill-bar-fill { 
+    height: 100%; 
+    background: white; 
+    border-radius: 2px; 
+}
+
+/* Language Items in Preview */
+.lang-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+}
+
+.lang-level {
+    opacity: 0.8;
+}
+
+/* CV Main */
+.cv-main {
+    width: 70%;
+    padding: 40px 35px;
+    color: #1e293b;
+}
+
+.cv-name-header h1 { 
+    font-size: 2.2rem; 
+    font-weight: 800; 
+    margin-bottom: 5px; 
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+.cv-name-header p { 
+    color: var(--brand-purple); 
+    font-weight: 600; 
+    font-size: 1rem; 
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.content-heading {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 2px solid var(--brand-purple);
+    padding-bottom: 5px;
+    margin: 25px 0 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.summary-text {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #475569;
+    margin-bottom: 20px;
+}
+
+/* Experience Items */
+.exp-item { 
+    margin-bottom: 20px; 
+}
+
+.exp-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: baseline;
+    font-weight: 700; 
+    font-size: 0.9rem; 
+    margin-bottom: 4px;
+}
+
+.exp-role {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.exp-date {
+    font-size: 0.7rem;
+    color: #64748b;
+}
+
+.exp-company { 
+    color: var(--brand-purple); 
+    font-size: 0.8rem; 
+    font-weight: 600; 
+    margin: 4px 0 8px; 
+}
+
+.exp-description { 
+    font-size: 0.75rem; 
+    color: #475569; 
+    line-height: 1.5;
+}
+
+/* Education Items */
+.edu-item {
+    margin-bottom: 15px;
+}
+
+.edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+}
+
+.edu-degree {
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.edu-school {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.edu-date {
+    font-size: 0.7rem;
+    color: #64748b;
+}
+
+/* Print Styles */
+@media print {
+    .navbar, .editor-panel, .action-buttons { 
+        display: none !important; 
+    }
+    .preview-panel { 
+        background: white; 
+        padding: 0; 
+    }
+    .cv-document { 
+        transform: none; 
+        box-shadow: none; 
+    }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .editor-panel {
+        width: 500px;
+    }
+}
+
+@media (max-width: 992px) {
+    .studio-container {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+    }
+    
+    .editor-panel {
+        width: 100%;
+    }
+    
+    .nav-actions {
+        gap: 8px;
+    }
+    
+    .btn-template, .btn-preview, .btn-download {
+        padding: 6px 15px;
+        font-size: 0.85rem;
+    }
+}

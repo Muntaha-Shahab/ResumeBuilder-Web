@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | CV Builder</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --primary-teal: #14b8a6;
+            --primary-teal-dark: #0d9488;
+            --primary-teal-soft: rgba(20, 184, 166, 0.1);
+            --navy-dark: #0f4c4c;
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --bg-light: #f8fafc;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05);
+            
+            /* Footer Dark Theme */
+            --footer-bg: #0a1a2f;
+            --footer-text: #94a3b8;
+            --footer-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: white;
+            border-bottom: 1px solid var(--border-light);
+            padding: 0.75rem 2rem;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--navy-dark);
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .navbar-brand:hover {
+            color: var(--primary-teal);
+        }
+
+        .logo-box {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-teal-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .btn-teal {
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-teal-dark));
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .btn-teal:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+            color: white;
+        }
+
+        .btn-outline-teal {
+            border: 1.5px solid var(--primary-teal);
+            color: var(--primary-teal);
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .btn-outline-teal:hover {
+            background: var(--primary-teal-soft);
+        }
+
+        /* ===== MAIN CONTENT - NO SCROLL ===== */
+        .main-content {
+            height: calc(100vh - 70px - 60px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .thankyou-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 2.5rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-teal-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .thankyou-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .thankyou-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .user-email {
+            background: var(--primary-teal-soft);
+            color: var(--primary-teal);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Compact Next Steps */
+        .next-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step {
+            flex: 1;
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 1rem 0.5rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .step:hover {
+            border-color: var(--primary-teal);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: var(--primary-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin: 0 auto 0.5rem;
+        }
+
+        .step p {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .step small {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        /* Single Button */
+        .action-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .btn-login {
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-teal-dark));
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 0.75rem 3rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 4px 10px -2px rgba(20, 184, 166, 0.4);
+            transition: all 0.2s;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -4px rgba(20, 184, 166, 0.5);
+            color: white;
+        }
+
+        .resend-link {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .resend-link a {
+            color: var(--primary-teal);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .resend-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Toast Notification */
+        .toast-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 9999;
+            border-left: 4px solid var(--primary-teal);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* ===== FOOTER - COMPACT ===== */
+        .footer {
+            background: var(--footer-bg);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            color: var(--footer-text);
+            font-size: 0.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--footer-text);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-teal);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.75rem 1rem;
+            }
+            
+            .thankyou-card {
+                padding: 1.5rem;
+            }
+            
+            .next-steps {
+                flex-wrap: wrap;
+            }
+            
+            .step {
+                min-width: 120px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            
+            .footer-links {
+                gap: 1rem;
+            }
+            
+            .btn-login {
+                padding: 0.75rem 2rem;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="d-flex align-items-center gap-3 text-decoration-none">
+            <div class="logo-box">
+                <i class="fa-solid fa-file-lines"></i>
+            </div>
+            <span class="navbar-brand">CV Builder</span>
+        </a>
+        
+        <div class="d-flex gap-2">
+            <a href="login.html" class="btn-outline-teal">
+                <i class="fa-regular fa-arrow-right-to-bracket me-2"></i>Login
+            </a>
+            <a href="signup.html" class="btn-teal">
+                <i class="fa-regular fa-user-plus me-2"></i>Sign Up
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content - No Scroll -->
+    <div class="main-content">
+        <div class="thankyou-card">
+            <!-- Success Icon -->
+            <div class="success-icon">
+                <i class="fa-regular fa-circle-check"></i>
+            </div>
+
+            <!-- Thank You Text -->
+            <h1 class="thankyou-title" id="welcomeMessage">Account Created! 🎉</h1>
+            <p class="thankyou-subtitle">Your account has been successfully created. Please log in to continue.</p>
+
+            <!-- User Email -->
+            <div class="user-email" id="userEmailDisplay">
+                <i class="fa-regular fa-envelope me-2"></i>
+                Loading...
+            </div>
+
+            <!-- Compact Next Steps -->
+            <div class="next-steps">
+                <div class="step" onclick="window.location.href='login.html'">
+                    <div class="step-number">1</div>
+                    <p>Log In</p>
+                    <small>To your account</small>
+                </div>
+                <div class="step" onclick="window.location.href='profile.html'">
+                    <div class="step-number">2</div>
+                    <p>Complete Profile</p>
+                    <small>Add your details</small>
+                </div>
+                <div class="step" onclick="window.location.href='templates.html'">
+                    <div class="step-number">3</div>
+                    <p>Choose Template</p>
+                    <small>10+ designs</small>
+                </div>
+                <div class="step" onclick="window.location.href='builder.html'">
+                    <div class="step-number">4</div>
+                    <p>Build CV</p>
+                    <small>In minutes</small>
+                </div>
+            </div>
+
+            <!-- Single Login Button -->
+            <div class="action-button">
+                <a href="login.html" class="btn-login">
+                    <i class="fa-regular fa-arrow-right-to-bracket"></i>
+                    Proceed to Login
+                </a>
+            </div>
+
+            <!-- Resend Email Link -->
+            <div class="resend-link">
+                <span class="text-muted">Didn't receive email? </span>
+                <a href="#" onclick="resendEmail(event)">Resend confirmation</a>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+        // ===== GET SIGNUP DATA =====
+        (function() {
+            // Get the most recent signup from localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const lastUser = users[users.length - 1];
+            
+            if (lastUser && lastUser.email) {
+                // Display user email
+                displayUserEmail(lastUser);
+                
+                // Personalize welcome message
+                personalizeWelcome(lastUser);
+            } else {
+                // If no user found, still show but with generic message
+                document.getElementById('userEmailDisplay').innerHTML = 
+                    '<i class="fa-regular fa-envelope me-2"></i>Your account is ready';
+            }
+            
+            // Clear any existing session (user must login)
+            localStorage.removeItem('currentUser');
+        })();
+
+        // ===== DISPLAY USER EMAIL =====
+        function displayUserEmail(user) {
+            const emailDisplay = document.getElementById('userEmailDisplay');
+            if (emailDisplay && user.email) {
+                emailDisplay.innerHTML = `<i class="fa-regular fa-envelope me-2"></i>${user.email}`;
+            }
+        }
+
+        // ===== PERSONALIZE WELCOME MESSAGE =====
+        function personalizeWelcome(user) {
+            const welcomeEl = document.getElementById('welcomeMessage');
+            if (welcomeEl && user.name) {
+                const firstName = user.name.split(' ')[0];
+                welcomeEl.textContent = `Thanks, ${firstName}! 🎉`;
+            }
+        }
+
+        // ===== RESEND CONFIRMATION EMAIL =====
+        window.resendEmail = function(event) {
+            event.preventDefault();
+            
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const lastUser = users[users.length - 1];
+            
+            if (lastUser && lastUser.email) {
+                // Show loading state
+                const link = event.target;
+                const originalText = link.textContent;
+                link.textContent = 'Sending...';
+                link.style.opacity = '0.7';
+                link.style.pointerEvents = 'none';
+                
+                // Simulate email sending
+                setTimeout(() => {
+                    showToast(`✓ Confirmation email sent to ${lastUser.email}`);
+                    
+                    // Reset link
+                    link.textContent = originalText;
+                    link.style.opacity = '1';
+                    link.style.pointerEvents = 'auto';
+                    
+                    // Track in localStorage
+                    trackEmailResend(lastUser.email);
+                }, 1500);
+            } else {
+                showToast('⚠️ No email address found', 'error');
+            }
+        };
+
+        // ===== TRACK EMAIL RESEND =====
+        function trackEmailResend(email) {
+            let resends = JSON.parse(localStorage.getItem('emailResends')) || [];
+            resends.push({
+                email: email,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('emailResends', JSON.stringify(resends));
+        }
+
+        // ===== SHOW TOAST NOTIFICATION =====
+        function showToast(message, type = 'success') {
+            // Remove any existing toast
+            const existingToast = document.querySelector('.toast-notification');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            // Create toast
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            
+            // Set icon based on type
+            let icon = 'fa-circle-check';
+            if (type === 'error') {
+                icon = 'fa-circle-exclamation';
+                toast.style.borderLeftColor = '#ef4444';
+            }
+            
+            toast.innerHTML = `
+                <i class="fa-regular ${icon}" style="color: ${type === 'error' ? '#ef4444' : 'var(--primary-teal)'};"></i>
+                <span style="color: var(--text-dark);">${message}</span>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // ===== AUTO REDIRECT TO LOGIN AFTER DELAY =====
+        let redirectTimer;
+        
+        function startRedirectTimer() {
+            // Clear any existing timer
+            if (redirectTimer) {
+                clearTimeout(redirectTimer);
+            }
+            
+            // Set timer for 10 seconds
+            redirectTimer = setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 10000);
+            
+            // Show toast notification
+            showToast('Redirecting to login in 10 seconds...', 'info');
+        }
+
+        // Start timer when page loads (optional - uncomment if wanted)
+        // startRedirectTimer();
+
+        // ===== PREVIEW FUNCTION FOR DEMO =====
+        window.previewTemplate = function(templateId) {
+            showToast(`Please login to preview templates`, 'info');
+        };
+    </script>
+
+<script>
+    fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.body.insertAdjacentHTML('beforeend', data);
+        })
+        .catch(error => console.error('Error loading footer:', error));
+</script>
+</body>
+</html>

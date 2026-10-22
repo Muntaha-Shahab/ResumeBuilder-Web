@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Preview - Template 1</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+body {
+    background: #f4f6f9;
+}
+
+.cv-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: #fff;
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* LEFT SIDEBAR */
+.sidebar {
+    width: 35%;
+    background: linear-gradient(180deg, #1f6d6d, #2a4f91);
+    color: #fff;
+    padding: 40px 25px;
+}
+
+.sidebar h5 {
+    margin-top: 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 8px;
+}
+
+.skill-bar {
+    background: rgba(255,255,255,0.2);
+    height: 8px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.skill-fill {
+    background: #fff;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* RIGHT SIDE */
+.content {
+    width: 65%;
+    padding: 40px;
+}
+
+.section-title {
+    font-weight: 600;
+    margin-top: 30px;
+    border-bottom: 2px solid #0d6e6e;
+    padding-bottom: 6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="cv-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h3 id="previewFullName">Sarah Chen</h3>
+        <p id="previewJobTitle">Senior Product Manager</p>
+
+        <h5>Contact</h5>
+        <p><i class="bi bi-envelope"></i> <span id="previewEmail"></span></p>
+        <p><i class="bi bi-telephone"></i> <span id="previewPhone"></span></p>
+        <p><i class="bi bi-linkedin"></i> <span id="previewLinkedin"></span></p>
+        <p><i class="bi bi-globe"></i> <span id="previewWebsite"></span></p>
+        <p><i class="bi bi-geo-alt"></i> <span id="previewLocation"></span></p>
+
+        <h5>Skills</h5>
+        <div id="previewSkills"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <div>
+            <h4 class="section-title">About Me</h4>
+            <p id="previewAbout"></p>
+        </div>
+
+        <div>
+            <h4 class="section-title">Experience</h4>
+            <div id="previewExperience"></div>
+        </div>
+
+        <div>
+            <h4 class="section-title">Education</h4>
+            <div id="previewEducation"></div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

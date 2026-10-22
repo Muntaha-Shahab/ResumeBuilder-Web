@@ -1,0 +1,194 @@
+<!-- components/footer.html -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <div class="footer-brand">
+                <div class="brand-icon">
+                    <i class="fa-regular fa-file-lines"></i>
+                </div>
+                <h3 class="footer-logo">ResumeBuilder</h3>
+            </div>
+            <p>
+                Create professional CVs in minutes with our
+                beautiful templates and easy-to-use builder.
+            </p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Product</h4>
+            <a href="templates.html">Templates</a>
+            <a href="about.html">How It Works</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="index.html">Features</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="resume-tips.html">Resume Tips</a>
+            <a href="faq.html">FAQ</a>
+            <a href="404.html">Blog</a>
+            <a href="404.html">Guides</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="404.html">Careers</a>
+            <a href="404.html">Press</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="404.html">Privacy Policy</a>
+            <a href="404.html">Terms of Service</a>
+            <a href="404.html">Cookie Policy</a>
+            <a href="404.html">Refund Policy</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 CVCraft. All rights reserved.
+    </div>
+</footer>
+
+<!-- Footer Styles (include these in your main CSS file) -->
+<style>
+    .site-footer {
+        background: #0f172a;
+        color: #94a3b8;
+        padding: 3rem 2rem 1.5rem;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        border-top: 1px solid #1e293b;
+        margin-top: auto;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .brand-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #14b8a6, #0d9488);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    .footer-logo {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: white;
+        margin: 0;
+    }
+
+    .footer-col p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        color: #94a3b8;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .social-icons a {
+        width: 36px;
+        height: 36px;
+        background: #1e293b;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #94a3b8;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .social-icons a:hover {
+        background: #14b8a6;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .footer-col h4 {
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .footer-col a {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+        transition: all 0.2s;
+        display: inline-block;
+    }
+
+    .footer-col a:hover {
+        color: #14b8a6;
+        transform: translateX(5px);
+    }
+
+    .footer-bottom {
+        max-width: 1200px;
+        margin: 2rem auto 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid #1e293b;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #64748b;
+    }
+
+    /* Responsive Footer */
+    @media (max-width: 768px) {
+        .footer-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .footer-col {
+            text-align: center;
+        }
+        
+        .footer-brand {
+            justify-content: center;
+        }
+        
+        .social-icons {
+            justify-content: center;
+        }
+    }
+</style>
